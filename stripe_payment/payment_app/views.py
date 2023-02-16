@@ -1,3 +1,12 @@
 from django.shortcuts import render
+from django.views import View
 
-# Create your views here.
+from .models import Item
+
+
+class CreateCheckoutSessionView(View):
+    """Возвращает Checkout Session ID"""
+
+
+class ItemDetailView():
+    """Детальное представление Item"""
