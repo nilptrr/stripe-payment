@@ -9,6 +9,7 @@ packages = [{include = "stripe_payment"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^4.1.7"
+stripe = "^5.1.1"
 
 
 [build-system]
