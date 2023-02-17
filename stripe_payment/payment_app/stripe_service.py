@@ -4,6 +4,7 @@ from .models import Item
 
 
 def create_chechout_session_id(item_id: int) -> int:
+    """Возвращает Checkout Sesson ID по item_id"""
     item = Item.objects.get(pk=item_id)
     stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
     checkout_session = stripe.checkout.Session.create(
