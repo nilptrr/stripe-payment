@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Buy {{ item.name }}</title>
+    <script src="https://js.stripe.com/v3/"></script>
+
+  </head>
+
+  <body>
+    <h3>{{ item.name }}</h3>
+    <p>{{ item.description }}</p>
+    <p>Price: {{ item.get_price }}$</p>  
+
+    <button type="button" id="buy-button">Buy</button>
+    {% csrf_token %}
+  </body>
+
+  <script type="text/javascript">
+
+    var stripe = Stripe( '{{ STRIPE_PUBLIC_KEY }}' );
+    var buyButton = document.getElementById("buy-button");
+    buyButton.addEventListener('click', function() {
+      fetch('{% url "buy" item.id %}', {
+          method: 'GET',
+        })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (session) {
+          // SEE https://stripe.com/docs/js/deprecated/redirect_to_checkout
+          return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function (result) {
+          if (result.error) {
+            alert(result.error.massage);
+            console.error("Error:", error);
+          }
+        });
+    });
+  </script>
+
+</html>
