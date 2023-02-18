@@ -125,4 +125,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 API_KEY = 'sk_test_51MaGPSLi7UmMpAciemZZAalHC13fnQZPCNusK2q1Pw4Mm16t6TQecNpENe7gFnDgSxFOrvLXyF4AuOgLiO7yGUaT00uvyQ4kRv'
 
-DOMAIN = 'http://127.0.0.1:8000'
+DOMAIN = 'http://localhost:8000'
