@@ -1,5 +1,5 @@
 from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 from django.http import JsonResponse
 import os
 
@@ -31,3 +31,13 @@ class ItemDetailView(DetailView):
         })
         
         return context
+
+
+class SuccessView(TemplateView):
+    """Представление успешной покупки"""
+    template_name = 'payment_app/success.html'
+
+
+class CancelView(TemplateView):
+    """Представление отмененной покупки"""
+    template_name = 'payment_app/cancel.html'
